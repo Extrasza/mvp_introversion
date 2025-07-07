@@ -1,5 +1,5 @@
 from flask_openapi3 import OpenAPI, Info, Tag
-from flask import redirect, request
+from flask import redirect
 from models.model import Model
 from schemas.schema import PersonalitySchema, PersonalityResultSchema, ErrorSchema
 from flask_cors import CORS
@@ -17,19 +17,18 @@ personality_tag = Tag(name="Personalidade", description="Classificação de pers
 def home():
     return redirect('/openapi')
 
-@app.post('/personalidade', tags=[personality_tag],
-          responses={"200": PersonalityResultSchema, "400": ErrorSchema})
-def classificar_personalidade():
+@app.post(
+    '/personalidade',
+    tags=[personality_tag],
+    responses={"200": PersonalityResultSchema, "400": ErrorSchema}
+)
+def classificar_personalidade(form: PersonalitySchema):
     try:
-        data = request.get_json()
-        form = PersonalitySchema(**data)
-
         model = Model()
         resultado = model.predict_personality(form.model_dump())
         return {"resultado": resultado}, 200
     except Exception as e:
         return {"message": f"Erro ao classificar personalidade: {str(e)}"}, 400
-    
 
 if __name__ == "__main__":
     app.run(debug=True)
