@@ -10,20 +10,19 @@
     <div class="form-container">
       <h2>Autoavaliação Comportamental</h2>
       <form id="avaliacao-form">
-
         <label for="medo_palco">Medo de falar em público</label>
         <select id="medo_palco">
           <option value="">Selecione</option>
-          <option value="1">Sim</option>
-          <option value="0">Não</option>
+          <option value="true">Sim</option>
+          <option value="false">Não</option>
         </select>
-                <label for="cansaco_social">Fica cansado após socializar?</label>
+        <label for="cansaco_social">Fica cansado após socializar?</label>
         <select id="cansaco_social">
           <option value="">Selecione</option>
-          <option value="1">Sim</option>
-          <option value="0">Não</option>
+          <option value="true">Sim</option>
+          <option value="false">Não</option>
         </select>
-        
+
         <label for="amigos">Tamanho do círculo de amizades</label>
         <input
           type="number"
@@ -49,20 +48,10 @@
         />
 
         <label for="saidas">Frequência em sair de casa</label>
-        <input
-          type="number"
-          id="saidas"
-          placeholder="Escala 1-10"
-          min="0"
-        />
+        <input type="number" id="saidas" placeholder="Escala 1-10" min="0" />
 
         <label for="postagens">Frequência de postagens em redes</label>
-        <input
-          type="number"
-          id="postagens"
-          placeholder="Escala 1-10"
-          min="0"
-        />
+        <input type="number" id="postagens" placeholder="Escala 1-10" min="0" />
 
         <button type="submit">Enviar avaliação</button>
       </form>

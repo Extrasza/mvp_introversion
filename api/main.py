@@ -22,10 +22,10 @@ def home():
     tags=[personality_tag],
     responses={"200": PersonalityResultSchema, "400": ErrorSchema}
 )
-def classificar_personalidade(form: PersonalitySchema):
+def classificar_personalidade(body: PersonalitySchema):
     try:
         model = Model()
-        resultado = model.predict_personality(form.model_dump())
+        resultado = model.predict_personality(body.model_dump())
         return {"resultado": resultado}, 200
     except Exception as e:
         return {"message": f"Erro ao classificar personalidade: {str(e)}"}, 400
